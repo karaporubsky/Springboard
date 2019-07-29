@@ -1,0 +1,25 @@
+Capstone Project Proposal 
+
+Problem to Solve: 
+	
+At my current organization, we are striving to find out what makes a location successful.  This involves many different segments of each branch, and different variables within each.  The problem this will solve is not knowing what makes a branch successful.
+
+Who is your client and why do they care about this problem?
+
+My client is my organization, YMCA of the USA (the national headquarters).  We care because while some locations are thriving, others are struggling, and we want to be able to identify why and keep all Ys thriving so we can continue to impact communities.
+
+What data are you going to use for this? How will you acquire this data?
+
+We have our own relational database that should most if not all the data we need.  We also have access to Esri software which could fill in gaps on national data sets if needed.  If metrics are needed from other data points, I have the ability to contact and collect data from Ys across the US.  
+
+In brief, outline your approach to solving this problems
+
+Meet with Senior VP of department to establish baselines of what a “Thriving Y” looks like, and establishing variables for testing.
+Pull data from databases.
+Perform variable testing to determine statistical significance.
+Train/test data to create algorithm assess the “thrive level” for Ys, perhaps in form of a ranking system.
+Be able to use on any YMCA branch at any given time (there are over 800 in the US alone).
+
+What are your deliverables?
+
+I will be delivering my code alongside a deck.
