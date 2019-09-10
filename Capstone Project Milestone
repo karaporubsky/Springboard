@@ -1,0 +1,69 @@
+Capstone Milestone Project
+
+Problem/Business Need: 
+Previously, the Thriving Ys Team was focused on strategies to help Struggling Ys. Generally, these efforts were:
+·       Reactive / responding to an immediate need or crisis like a cash flow issue, a leadership vacuum, a risk issue, etc.
+·       Informed by historical (often outdated) data and information that relied on context from the Resource Director(s)
+Now and in the future, we intend to engage with Ys at all points in the continuum of Y vitality/health/performance and spend more time on helping Striving Ys become Thriving Ys (and/or help Thriving Ys remain Thriving Ys). The intent of this project is to create something that allows us to:
+·       Use data to identify markers of a Thriving Y
+·       Use data to identify where Ys are in the continuum of Struggling> Striving> Thriving, and identify what kind of engagement they need
+·       Coach alliance partners and SDPYs to employ Thriving Y practices and to help Ys move the needle towards Thriving
+·       Educate the movement around Thriving Y practices
+·       Share with CEOs and CVOs to…
+o   Understand our shared definitions and measures of Struggling, Striving, and Thriving YMCAs
+o   Learn where their YMCA is on the continuum (perhaps also in relationship to other YMCAs), as informed by data rather than perception 
+o   Inspire action based on where their YMCA is on the continuum (ex. share thriving strategies with others, collaborate to move along the continuum) 
+In order to operate in this future state, we need:
+·       A shared understanding of what a Thriving Y is (i.e., common language/metrics - within Y-USA, across the service delivery network, and across the movement - to assess and discuss the vitality/health/performance of a YMCA)
+·       Consistent, clear, reliable data that…
+o   Is seamlessly accessed and applied across the service delivery network
+o   Is consistent with data that Ys access on their own
+o   Comes alive for Ys through dashboards and visualizations
+o   Reflects the past, present, and (eventually) predictive future of a Y
+Client: 
+Y-USA (multiple departments)
+Individual YMCA associations
+
+Describe your dataset/how you are wrangling data:
+Y-USA has its own databases/warehouses on a SQL server and all data will be pulled from this resource with the exception of the “external factors” variables which will be pulled using our Esri database.  
+After being pulled, it will be explored for validity reasons, cleaned, and normalized for modeling.
+
+Initial Findings: 
+As we are still in the process of working with multiple departments to determine variables, there are no findings at this time.
+
+Code:
+Though I have not yet pulled the data, the plan looks similar to this: 
+For SQL pulls: 
+import pyodbc 
+conn = pyodbc.connect('Driver={SQL Server};'
+                      'Server=server_name;'
+                      'Database=db_name;'
+                      'Trusted_Connection=yes;')
+
+
+cursor = conn.cursor()
+cursor.execute('SELECT * FROM db_name.Table')
+
+
+for row in cursor:
+    print(row)
+For K-Means Clustering: 
+from pandas import DataFrame
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+df = pd.read_csv(‘a data file, probably’)
+kmeans = KMeans(n_clusters=4).fit(df)
+Labels = Kmeans.predict(df)
+centroids = kmeans.cluster_centers_
+For Random Forest Feature Selection
+import pandas as pd
+from sklearn.ensemble import RandomForestClassfier
+from sklearn.feature_selection import SelectFromModel
+X_train,y_train,X_test,y_test = train_test_split(data,test_size=0.3)
+sel = SelectFromModel(RandomForestClassifier(n_estimators = 100))   #not sure about n_estimators?)
+sel.fit(X_train, y_train)
+selected_feat= X_train.columns[(sel.get_support())]
+len(selected_feat)
+print(selected_feat)
+pd.series(sel.estimator_,feature_importances_,.ravel()).hist()
+For Classification → we haven’t specifically spoken about which method to use for classification, tbd
